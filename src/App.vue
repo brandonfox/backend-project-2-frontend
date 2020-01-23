@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NewPasteBox/>
+    <PasteList/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NewPasteBox from "@/components/NewPasteBox";
+import axios from 'axios'
+import PasteList from "@/components/PasteList";
+
+global.axios = axios;
+global.backend = "http://127.0.0.1:25801/api";
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    PasteList,
+    NewPasteBox
   }
 }
 </script>
