@@ -11,8 +11,28 @@ services:
             MYSQL_USER: "server"
             MYSQL_PASS: "serverPass"
             MYSQL_DATABASE: "backenddb"
+        expose:
+            - 3306
+    backend:
+        container_name: "Backend-container"
+        image: registry.gitlab.com/brandonfox/backend-project-2-backend
+        environment: 
+            MYSQL_HOST: "db"
+            MYSQL_POST: 3306
+        links:
+            - db
+        expose:
+            - 8080
+    frontend:
+        links:
+            - backend
+        container_name: "Frontend-container"
+        image: registry.gitlab.com/brandonfox/backend-project-2-frontend
+        environment: 
+            VUE_APP_BACKEND_HOSTNAME: backend
+            VUE_APP_BACKEND_PORT: 8080
         ports:
-            - 3033:3306
+            - 8080:8080
 
 volumes:
     db_data:
