@@ -4,9 +4,9 @@
             <div>
                 ------------------------------------------------------------
             </div>
-            <div v-on:click="goto(paste.id)">
+            <router-link :to="'/'+paste.id">
                 {{paste.title}}
-            </div>
+            </router-link>
             <div>
                 {{paste.content}}
             </div>
@@ -23,9 +23,7 @@
             }
         },
         methods: {
-            goto: function(id) {
-                window.console.log(id)
-            }
+
         },
         created() {
             global.axios.post(global.backend + "/recents").then(data => {

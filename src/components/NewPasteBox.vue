@@ -15,7 +15,7 @@
             </label>
             <br>
             <input type="submit" value="Submit">
-            <div id="errormsg">{{error}}</div>
+            <div style="color: red" id="errormsg">{{error}}</div>
         </form>
     </div>
 
@@ -41,15 +41,16 @@
                     e.preventDefault()
                 }
                 else if(this.toUtf(this.pasteContent).length > 1024 * 1024 * 64){
-                    this.error = "Content is too long"
+                    this.error = "Content is too long";
                     e.preventDefault()
                 }
                 else{
-                    this.sendPaste(this.pasteContent,this.pasteTitle)
+                    this.sendPaste(this.pasteContent,this.pasteTitle);
+                    this.$router.go(0)
                 }
             },
             sendPaste: function(pasteData, pasteTitle) {
-                global.axios.post(global.backend + "/paste",{content:pasteData, title:pasteTitle}).then(response => window.console.log(response))
+                global.axios.post(global.backend + "/paste",{content:pasteData, title:pasteTitle})
             },
             toUtf: function(str) { //Taken from https://gist.github.com/joni/3760795/8f0c1a608b7f0c8b3978db68105c5b1d741d0446
                 let utf8 = [];
