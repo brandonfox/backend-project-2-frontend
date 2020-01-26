@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h4>100 Most Recent Pastes:</h4>
         <div v-for="paste in pastes" v-bind:key="paste.id">
             <div>
                 ------------------------------------------------------------
