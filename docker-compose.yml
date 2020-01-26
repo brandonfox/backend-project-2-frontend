@@ -29,8 +29,20 @@ services:
         container_name: "Frontend-container"
         image: registry.gitlab.com/brandonfox/backend-project-2-frontend
         environment: 
-            VUE_APP_BACKEND_HOSTNAME: backend
+
             VUE_APP_BACKEND_PORT: 8080
+        expose:
+            - 8080
+    
+    proxy:
+        links:
+            - backend
+            - frontend
+        container_name: proxy
+        image: brandon-proxy
+        build:
+            dockerfile: nginx.dockerfile
+            context: .
         ports:
             - 8080:8080
 
