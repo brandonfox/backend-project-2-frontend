@@ -1,8 +1,17 @@
 <template>
     <div>
+        <h2>Paste Title:</h2>
+        <p>
         {{pasteData.title}}
-        <br>
+        </p>
+        <h4>Paste Content:</h4>
+        <p>
         {{pasteData.content}}
+        </p>
+        <h4>Time Created:</h4>
+        <p>
+            {{pasteData.createdAt}}
+        </p>
     </div>
 </template>
 
