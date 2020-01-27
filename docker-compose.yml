@@ -22,8 +22,6 @@ services:
             - db
 
     frontend:
-        links:
-            - backend
         container_name: "Frontend-container"
         image: registry.gitlab.com/brandonfox/backend-project-2-frontend
         environment: 
