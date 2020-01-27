@@ -33,24 +33,23 @@
         },
         methods: {
             checkForm: function(e) {
+                e.preventDefault();
                 if(this.pasteTitle.length < 1){
                     this.error = "Paste title cannot be empty";
-                    e.preventDefault()
                 }else if(this.pasteContent.length < 1){
                     this.error = "Paste content cannot be empty";
-                    e.preventDefault()
                 }
                 else if(this.toUtf(this.pasteContent).length > 1024 * 1024 * 64){
                     this.error = "Content is too long";
-                    e.preventDefault()
                 }
                 else{
                     this.sendPaste(this.pasteContent,this.pasteTitle);
-                    this.$router.go(0)
                 }
             },
             sendPaste: function(pasteData, pasteTitle) {
-                global.axios.post(global.backend + "/paste",{content:pasteData, title:pasteTitle})
+                global.axios.post(global.backend + "/paste",{content:pasteData, title:pasteTitle}).then(() => this.$router.go(0)).catch(result => {
+                    this.error = result.response.data;
+                })
             },
             toUtf: function(str) { //Taken from https://gist.github.com/joni/3760795/8f0c1a608b7f0c8b3978db68105c5b1d741d0446
                 let utf8 = [];

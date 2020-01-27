@@ -5,12 +5,9 @@
             <div>
                 ------------------------------------------------------------
             </div>
-            <router-link :to="'/'+paste.id">
+            <router-link :to="'/'+paste.id" style="font-size: 24px;">
                 {{paste.title}}
             </router-link>
-            <div>
-                {{paste.content}}
-            </div>
         </div>
     </div>
 </template>

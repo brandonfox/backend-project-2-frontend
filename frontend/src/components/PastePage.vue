@@ -1,11 +1,11 @@
 <template>
     <div>
         <h2>Paste Title:</h2>
-        <p>
+        <h3>
         {{pasteData.title}}
-        </p>
+        </h3>
         <h4>Paste Content:</h4>
-        <p>
+        <p  style="word-wrap: break-word">
         {{pasteData.content}}
         </p>
         <h4>Time Created:</h4>

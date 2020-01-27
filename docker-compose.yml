@@ -14,7 +14,6 @@ services:
 
     backend:
         image: registry.gitlab.com/brandonfox/backend-project-2-backend
-        
         environment: 
             MYSQL_HOST: "db"
             MYSQL_POST: 3306
