@@ -11,31 +11,26 @@ services:
             MYSQL_USER: "server"
             MYSQL_PASS: "serverPass"
             MYSQL_DATABASE: "backenddb"
-        expose:
-            - 3306
+
     backend:
-        container_name: "Backend-container"
         image: registry.gitlab.com/brandonfox/backend-project-2-backend
+        
         environment: 
             MYSQL_HOST: "db"
             MYSQL_POST: 3306
-        links:
+        depends_on:
             - db
-        expose:
-            - 8080
+
     frontend:
         links:
             - backend
         container_name: "Frontend-container"
         image: registry.gitlab.com/brandonfox/backend-project-2-frontend
         environment: 
-
             VUE_APP_BACKEND_PORT: 8080
-        expose:
-            - 8080
     
     proxy:
-        links:
+        depends_on:
             - backend
             - frontend
         container_name: proxy
@@ -44,7 +39,7 @@ services:
             dockerfile: nginx.dockerfile
             context: .
         ports:
-            - 8080:8080
+            - 8080:80
 
 volumes:
     db_data:
