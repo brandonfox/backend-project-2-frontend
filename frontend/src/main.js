@@ -24,6 +24,7 @@ if(process.env.VUE_APP_BACKEND_PORT !== undefined){
 global.backend += "/api";
 
 const router = new VueRouter({
+  mode: 'history',
   routes: [
     {path: "/", component: Home},
     {path: "/:id", component: PastePage}
