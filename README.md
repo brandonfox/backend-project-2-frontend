@@ -1,5 +1,7 @@
 # frontend
 
+To run the completed project run docker-compose up --scale backend=4
+
 ## Project setup
 ```
 yarn install
